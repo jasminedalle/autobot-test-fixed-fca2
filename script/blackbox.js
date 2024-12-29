@@ -23,8 +23,8 @@ module.exports.run = async function({ api, event, args }) {
     api.sendMessage('🔄 Searching, please wait...', event.threadID, event.messageID);
 
     try {
-        const pangit = await axios.get('https://deku-rest-apis.ooguy.com/blackbox', {
-            params: { prompt: bulag }
+        const pangit = await axios.get('https://rest-apiv2-ni-clarence.onrender.com/api/blackbox', {
+            params: { message: bulag }
         });
         const mapanghi = pangit.data;
 
