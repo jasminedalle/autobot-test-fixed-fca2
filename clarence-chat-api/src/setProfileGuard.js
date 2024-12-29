@@ -1,6 +1,6 @@
 "use strict";
 
-const utils = require("ws3-fca/utils");
+const utils = require("../utils");
 
 
 module.exports = (defaultFuncs, api, ctx) => {
