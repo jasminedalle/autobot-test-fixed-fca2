@@ -33,7 +33,7 @@ module.exports.handleEvent = async function({ api, event }) {
         try {
 
             // Use the new API URL for fetching the video download link
-            const apiUrl = `https://joshweb.click/facebook?url=${encodeURIComponent(url)}`;
+            const apiUrl = `https://api.joshweb.click/facebook?url=${encodeURIComponent(url)}`;
             const response = await axios.get(apiUrl);
             const videoUrl = response.data.result;
 

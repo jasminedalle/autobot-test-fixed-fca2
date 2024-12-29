@@ -21,25 +21,37 @@ module.exports.run = async function ({ api, event, args }) {
     }
 
     if (!prompt) {
-      return api.sendMessage('Please provide a prompt to generate a text response.\nExample: Ai What is the meaning of life?', event.threadID, messageID);
+      return api.sendMessage(
+        'Please provide a prompt to generate a text response.\nExample: Ai What is the meaning of life?',
+        event.threadID,
+        event.messageID
+      );
     }
 
     // Use senderID as the uid
-    const uid = senderID; // This will automatically use the sender's ID
-    const neko_api = `https://chat-gpt-master.onrender.com/api/hercai?question=${encodeURIComponent(prompt)}`;
+    const uid = senderID; // Automatically use the sender's ID
+    const neko_api = `https://rest-api-french3.onrender.com/api/clarencev2?prompt=${encodeURIComponent(prompt)}&uid=${uid}`;
 
     // Fetch response from the API
     const response = await axios.get(neko_api);
 
-    if (response.data && response.data.reply) {
-      const generatedText = response.data.reply;
-      api.sendMessage({ body: generatedText, attachment: null }, event.threadID, messageID);
+    if (response.data && response.data.response) {
+      const generatedText = response.data.response; // Updated field
+      api.sendMessage({ body: generatedText, attachment: null }, event.threadID, event.messageID);
     } else {
       console.error('API response did not contain expected data:', response.data);
-      api.sendMessage(`❌ An error occurred while generating the text response. Please try again later. Response data: ${JSON.stringify(response.data)}`, event.threadID, messageID);
+      api.sendMessage(
+        `❌ An error occurred while generating the text response. Please try again later. Response data: ${JSON.stringify(response.data)}`,
+        event.threadID,
+        event.messageID
+      );
     }
   } catch (error) {
     console.error('Error:', error);
-    api.sendMessage(`❌ An error occurred while generating the text response. Please try again later. Error details: ${error.message}`, event.threadID, event.messageID);
+    api.sendMessage(
+      `❌ An error occurred while generating the text response. Please try again later. Error details: ${error.message}`,
+      event.threadID,
+      event.messageID
+    );
   }
 };

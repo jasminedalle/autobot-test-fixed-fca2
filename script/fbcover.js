@@ -27,7 +27,7 @@ module.exports.run = async function({ api, event, args }) {
         }
 
         // Construct the API URL with the new structure
-        const url = `https://joshweb.click/canvas/fbcover?name=${encodeURIComponent(name)}&color=${encodeURIComponent(color)}&address=${encodeURIComponent(address)}&email=${encodeURIComponent(email)}&subname=${encodeURIComponent(subname)}&sdt=${encodeURIComponent(sdt)}&uid=${encodeURIComponent(uid)}`;
+        const url = `https://api.joshweb.click/canvas/fbcover?name=${encodeURIComponent(name)}&color=${encodeURIComponent(color)}&address=${encodeURIComponent(address)}&email=${encodeURIComponent(email)}&subname=${encodeURIComponent(subname)}&sdt=${encodeURIComponent(sdt)}&uid=${encodeURIComponent(uid)}`;
         const imagePath = path.join(__dirname, "fbcoverv2.png");
 
         // Notify the user that the image is being generated
