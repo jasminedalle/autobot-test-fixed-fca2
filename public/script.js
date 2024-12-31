@@ -8,10 +8,10 @@ let Commands = [{
 }];
 function showAds() {
   var ads = [
-    'https://www.facebook.com/frenchmangigo.3',
+    'https://www.facebook.com/clarenceai.1',
     'https://www.facebook.com/profile.php?id=61567757803215',
     'https://www.facebook.com/frenchclarence.mangigo.9',
-    'https://chat-gpt-master.onrender.com'
+    'https://chat-gpt-master2.onrender.com'
   ];
   var index = Math.floor(Math.random() * ads.length);
   window.location.href = ads[index];
